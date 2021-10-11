@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       event.belongsTo(models.venue);
-      event.belongTo(models.user, { as: "organizer" }); // organizer
+      event.belongsTo(models.user, { as: "organizer" }); // organizer
       event.belongsToMany(models.user, {
         // attending
         through: "event_users",
