@@ -6,6 +6,8 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "bcrypt": "^5.0.1",
+    "jsonwebtoken": "^8.5.1",
     "pg": "^8.7.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -15,10 +17,13 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "node .",
+    "dev": "env DELAY=1000 npx nodemon .",
+    "initdev": "npm run migrate && npm run seed",
+    "migrate": "npx sequelize-cli db:migrate",
+    "seed": "npx sequelize-cli db:seed:all",
+    "resetDB": "npx sequelize-cli db:migrate:undo:all && npm run initdev",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "eslintConfig": {
     "extends": [
