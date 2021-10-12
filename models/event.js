@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       event.belongsTo(models.venue);
-      event.belongsTo(models.user, { as: "organizer" }); // organizer
+      event.belongsTo(models.user, { as: "organizer", foreignKey: "userId" }); // organizer
       event.belongsToMany(models.user, {
         // attending
         through: "event_users",
@@ -21,10 +21,11 @@ module.exports = (sequelize, DataTypes) => {
   }
   event.init(
     {
+      title: { type: DataTypes.STRING, allowNull: false },
       image: { type: DataTypes.STRING, allowNull: false },
       date: { type: DataTypes.STRING, allowNull: false },
-      link: { type: DataTypes.STRING, allowNull: false },
-      description: { type: DataTypes.STRING, allowNull: false },
+      link: { type: DataTypes.STRING },
+      description: { type: DataTypes.TEXT, allowNull: false },
       userId: DataTypes.INTEGER,
       venueId: DataTypes.INTEGER,
     },
