@@ -10,7 +10,7 @@ module.exports = {
       },
       title: { type: Sequelize.STRING, allowNull: false },
       image: { type: Sequelize.STRING, allowNull: false },
-      date: { type: Sequelize.STRING, allowNull: false },
+      date: { type: Sequelize.DATE, allowNull: false },
       link: { type: Sequelize.STRING },
       description: { type: Sequelize.TEXT, allowNull: false },
       createdAt: {

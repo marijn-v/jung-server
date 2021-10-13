@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       title: { type: DataTypes.STRING, allowNull: false },
       image: { type: DataTypes.STRING, allowNull: false },
-      date: { type: DataTypes.STRING, allowNull: false },
+      date: { type: DataTypes.DATE, allowNull: false },
       link: { type: DataTypes.STRING },
       description: { type: DataTypes.TEXT, allowNull: false },
       userId: DataTypes.INTEGER,
