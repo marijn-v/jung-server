@@ -20,6 +20,16 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+router.get("/venues", async (req, res, next) => {
+  // http://localhost:4000/events
+  try {
+    const allVenues = await Venue.findAll();
+    res.send(allVenues);
+  } catch (e) {
+    next(e);
+  }
+});
+
 // add event + ADD AUTH
 router.post("/:id/add", auth, async (req, res, next) => {
   const user = await User.findByPk(req.params.id);
@@ -42,7 +52,10 @@ router.post("/:id/add", auth, async (req, res, next) => {
         userId: user.id, // passing it as params?
         venueId, // how to add this..
       });
-      res.json(newEvent);
+      const fullEvent = await Event.findByPk(newEvent.id, {
+        include: [Venue],
+      });
+      res.json(fullEvent);
     }
   } catch (e) {
     next(e);
