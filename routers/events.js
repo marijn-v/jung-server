@@ -49,8 +49,8 @@ router.post("/:id/add", auth, async (req, res, next) => {
         date,
         description,
         link,
-        userId: user.id, // passing it as params?
-        venueId, // how to add this..
+        userId: user.id,
+        venueId,
       });
       const fullEvent = await Event.findByPk(newEvent.id, {
         include: [Venue],
