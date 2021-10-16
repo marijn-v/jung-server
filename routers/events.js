@@ -4,6 +4,7 @@ const auth = require("../auth/middleware");
 const Event = require("../models").event;
 const User = require("../models").user;
 const Venue = require("../models").venue;
+const Attender = require("../models").event_user;
 
 const router = new Router();
 
@@ -33,7 +34,7 @@ router.get("/venues", async (req, res, next) => {
 // add event + ADD AUTH
 router.post("/:id/add", auth, async (req, res, next) => {
   const user = await User.findByPk(req.params.id);
-  console.log("user in backend", user);
+  // console.log("user in backend", user);
 
   try {
     const { title, image, date, description, link, venueId } = req.body;
@@ -57,6 +58,24 @@ router.post("/:id/add", auth, async (req, res, next) => {
       });
       res.json(fullEvent);
     }
+  } catch (e) {
+    next(e);
+  }
+});
+
+// add attender to event_user + add AUTH
+router.put("/:eventId/user/:userId", auth, async (req, res, next) => {
+  const user = await User.findByPk(req.params.userId);
+  const event = await Event.findByPk(req.params.eventId);
+
+  console.log("user event backend", user, event);
+
+  try {
+    const newAttender = await Attender.create({
+      eventId: event.id,
+      userId: user.id,
+    });
+    res.json(newAttender);
   } catch (e) {
     next(e);
   }
