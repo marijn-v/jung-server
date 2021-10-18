@@ -64,18 +64,20 @@ router.post("/:id/add", auth, async (req, res, next) => {
 });
 
 // add attender to event_user + add AUTH
-router.put("/:eventId/user/:userId", auth, async (req, res, next) => {
+router.put("/:eventId/user/:userId", async (req, res, next) => {
   const user = await User.findByPk(req.params.userId);
   const event = await Event.findByPk(req.params.eventId);
-
-  console.log("user event backend", user, event);
 
   try {
     const newAttender = await Attender.create({
       eventId: event.id,
       userId: user.id,
     });
-    res.json(newAttender);
+    const attendEventId = await Event.findByPk(newAttender.id, {
+      include: [{ model: User, as: "attending" }],
+    });
+
+    res.json(attendEventId);
   } catch (e) {
     next(e);
   }
