@@ -69,15 +69,15 @@ router.put("/:eventId/user/:userId", async (req, res, next) => {
   const event = await Event.findByPk(req.params.eventId);
 
   try {
-    const newAttender = await Attender.create({
+    await Attender.create({
       eventId: event.id,
       userId: user.id,
     });
-    const attendEventId = await Event.findByPk(newAttender.id, {
+    const attendEvent = await Event.findByPk(req.params.eventId, {
       include: [{ model: User, as: "attending" }],
     });
 
-    res.json(attendEventId);
+    res.json(attendEvent);
   } catch (e) {
     next(e);
   }

@@ -21,6 +21,24 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+      {
+        name: "Koffie & Ambacht",
+        address: "Ebenhaëzerstraat 52A, 3083 RP Rotterdam",
+        link: "http://www.koffieenambacht.nl/",
+        latitude: 51.89002,
+        longitude: 4.4805,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "OCCII",
+        address: "Amstelveenseweg 134, 1075 XL Amsterdam",
+        link: "https://occii.org/",
+        latitude: 52.35436,
+        longitude: 4.85535,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
     ]);
   },
 
