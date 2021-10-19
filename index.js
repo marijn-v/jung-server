@@ -8,6 +8,7 @@ const eventRouter = require("./routers/events");
 const emailRouter = require("./routers/email");
 
 const app = express();
+app.use(corsMiddleWare());
 /**
  * Middlewares: DO NOT REGISTER ANY ROUTERS BEFORE THE MIDDLEWARES
  *
@@ -31,8 +32,6 @@ const app = express();
  * docs: https://expressjs.com/en/resources/middleware/cors.html
  *
  */
-
-app.use(corsMiddleWare());
 
 /**
  * morgan:
