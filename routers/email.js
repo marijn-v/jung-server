@@ -61,7 +61,7 @@ async function sendEmail(name, email, message, eventTitle) {
       `,
     };
 
-    console.log("mailOptions", mailOptions);
+    // console.log("mailOptions", mailOptions);
 
     return await transporter.sendMail(mailOptions, function (error, data) {
       if (error) {
