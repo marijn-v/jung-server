@@ -14,6 +14,8 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
           isProfessional: true,
+          isAdmin: false,
+          status: "pending",
         },
         {
           name: "dummy",
@@ -22,6 +24,18 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
           isProfessional: false,
+          isAdmin: false,
+          status: "pending",
+        },
+        {
+          name: "admin",
+          email: "admin@admin.com",
+          password: bcrypt.hashSync("JU-ng-202-!#!", SALT_ROUNDS),
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          isProfessional: false,
+          isAdmin: true,
+          status: "approved",
         },
       ],
       {}
