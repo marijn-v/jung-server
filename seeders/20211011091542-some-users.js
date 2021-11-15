@@ -15,6 +15,7 @@ module.exports = {
           updatedAt: new Date(),
           isProfessional: true,
           isAdmin: false,
+          status: "pending",
         },
         {
           name: "dummy",
@@ -24,6 +25,7 @@ module.exports = {
           updatedAt: new Date(),
           isProfessional: false,
           isAdmin: false,
+          status: "pending",
         },
         {
           name: "admin",
@@ -33,6 +35,7 @@ module.exports = {
           updatedAt: new Date(),
           isProfessional: false,
           isAdmin: true,
+          status: "approved",
         },
       ],
       {}

@@ -12,7 +12,10 @@ module.exports = {
       email: { type: Sequelize.STRING, allowNull: false, unique: true },
       password: { type: Sequelize.STRING, allowNull: false },
       isAdmin: Sequelize.BOOLEAN,
-
+      status: {
+        type: Sequelize.ENUM("pending", "approved"),
+        defaultValue: "pending",
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

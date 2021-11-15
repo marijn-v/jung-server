@@ -24,6 +24,10 @@ module.exports = (sequelize, DataTypes) => {
       password: { type: DataTypes.STRING, allowNull: false },
       isProfessional: DataTypes.BOOLEAN,
       isAdmin: DataTypes.BOOLEAN,
+      status: {
+        type: DataTypes.ENUM("pending", "approved"),
+        defaultValue: "pending",
+      },
     },
     {
       sequelize,
