@@ -28,7 +28,7 @@ module.exports = {
         {
           name: "admin",
           email: "admin@admin.com",
-          password: bcrypt.hashSync("a", SALT_ROUNDS),
+          password: bcrypt.hashSync("JU-ng-202-!#!", SALT_ROUNDS),
           createdAt: new Date(),
           updatedAt: new Date(),
           isProfessional: false,
